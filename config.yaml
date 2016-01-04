@@ -1,0 +1,53 @@
+---
+baseurl: "http://traeblain.com/"
+title: "Trae Blain"
+metaDataFormat: "yaml"
+paginate: 5
+languageCode: "en-us"
+copyright: "This work is licensed under a All Rights Reserved licensed."
+canonifyurls: true
+ignoreFiles: ["\\.less$"]
+
+author:
+  name: Trae Blain
+
+
+blackfriday:
+  plainIDAnchors: true
+  extensions:
+    - hardLineBreak
+
+params:
+  disqus: traeblain
+  segment: en92uyjogkzxfc8is193
+  Menu:
+    - Name: Blog
+      Link: /blog
+      Weight: 1
+      Pre: "<i class='fa fa-home'></i>"
+      Title: Blog
+    - Name: Facebook
+      Link: http://facebook.com/traeblain
+      Weight: 2
+      Pre: "<i class='fa fa-facebook'></i>"
+      Title: Facebook  
+    - Name: Twitter
+      Link: http://twitter.com/traeblain
+      Weight: 3
+      Pre: "<i class='fa fa-twitter'></i>"
+      Title: Twitter
+    - Name: "B<span class='small'>the</span>B"
+      Link: http://breakingthebike.com/
+      Weight: 4
+      Pre: "<i class='fa fa-bicycle'></i>"
+      Title: Breaking the Bike
+    - Name: Github
+      Link: http://github.com/traeblain
+      Weight: 5
+      Pre: "<i class='fa fa-github'></i>"
+      Title: Github
+    - Name: PGP Info
+      Link: http://keybase.io/traeblain
+      Weight: 6
+      Pre: "<i class='fa fa-lock'></i>"
+      Title: PGP Info (Keybase)

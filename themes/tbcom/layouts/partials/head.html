@@ -1,0 +1,7 @@
+    <head>
+        {{ partial "meta.html" . }}
+        <title>{{ if and (.Title) (.IsPage) }}{{ .Title }} &middot; {{ else }}{{ .Title | singularize }} &middot; {{ end }}{{ .Site.Title }}</title>
+        <link rel="canonical" href="{{ .Site.BaseURL }}" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ .RSSLink }}">
+        <link rel="stylesheet" type='text/css' href="{{ .Site.BaseURL }}css/style.css"/>
+    </head>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+{{ `<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->` | safeHTML }}
+{{ `<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->` | safeHTML }}
+{{ `<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->` | safeHTML }}
+{{ `<!--[if gt IE 8]><!-->` | safeHTML }}<html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#">{{ `<!--<![endif]-->` | safeHTML }}
+
+{{ partial "head.html" . }}
+<body class="{{ if .IsHome }}home{{ end }}">
+{{ `<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to experience this site.</p><![endif]-->` | safeHTML }}
+
+<main class="container index" role="main">
+
+  <header class="twelve columns">
+    <div class="front">
+      <div id="pt"></div>
+    </div>
+    <div class="sep"></div>
+  </header>
+
+  <!-- ###### Blog ###### -->
+  <section id="notebook">
+    <div class="row">
+      <div class="twelve columns">
+        <h2>Notebook</h2>
+      </div>
+    </div>
+    <div class="row flex ex">
+      <div class="four columns index-block">
+        &nbsp;
+      </div>
+      <div class="eight columns">
+        {{ range first 3 .Paginator.Pages }}
+          {{ .Render "li" }}
+        {{ end }}
+      </div>
+    </div>
+    <div class="sep"></div>
+  </section>
+
+  <!-- ###### Fitbit ###### -->
+  <section id="fitbit">
+    <div class="row">
+      <div class="twelve columns">
+        <h2>Activity</h2>
+      </div>
+    </div>
+    <div class="row flex">
+      <div class="four columns index-block">
+        &nbsp;
+      </div>
+      <div class="eight columns">
+        <input checked="" type="radio" name="fitslider" class="fitslide-button" id="fitslide1" selected="true">
+        <input type="radio" name="fitslider" class="fitslide-button" id="fitslide2">
+        <input type="radio" name="fitslider" class="fitslide-button" id="fitslide3">
+        <input type="radio" name="fitslider" class="fitslide-button" id="fitslide4">
+        <div class="fitactive">
+          <label for="fitslide1" class="slide-button">Summary</label>
+          <label for="fitslide2" class="slide-button">Steps</label>
+          <label for="fitslide3" class="slide-button">Floors</label>
+          <label for="fitslide4" class="slide-button">Calories</label>
+        </div>
+        <div id="fitslides">
+          <div class="overflow">
+            <div class="inner">
+              <article class="fitsummary">
+                <h4>Activity Level: <span id="fitlevel">Lazy</span></h4>
+                <h5>Steps this Week: <span id="fitsteps">#####</span></h5>
+                <h5>Floors this Week: <span id="fitfloors">###</span></h5>
+                <h5>Percentage Active: <span id="fitpercent">##.#%</span></h5>
+              </article>
+              <article>
+                <div id="stepschart"></div>
+              </article>
+              <article>
+                <div id="floorchart"></div>
+              </article>
+              <article>
+                <div id="caloriechart"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sep"></div>
+  </section>
+
+  <!-- ###### Dash ###### -->
+  <section id="dash">
+    <div class="row">
+      <div class="twelve columns">
+        <h2>Driving</h2>
+      </div>
+    </div>
+    <div class="row flex">
+      <div class="four columns index-block">
+        &nbsp;
+      </div>
+      <div class="eight columns">
+        <input checked="" type="radio" name="dashslider" class="dashslide-button" id="dashslide1" selected="true">
+        <input type="radio" name="dashslider" class="dashslide-button" id="dashslide2">
+        <input type="radio" name="dashslider" class="dashslide-button" id="dashslide3">
+        <input type="radio" name="dashslider" class="dashslide-button" id="dashslide4">
+        <div class="dashactive">
+          <label for="dashslide1" class="slide-button">Summary</label>
+          <label for="dashslide2" class="slide-button">Score</label>
+          <label for="dashslide3" class="slide-button">Distance</label>
+          <label for="dashslide4" class="slide-button">Fuel</label>
+        </div>
+        <div id="dashslides">
+          <div class="overflow">
+            <div class="inner">
+              <article class="dashsummary">
+                <h4>Driving Score: <span id="dashscore">65</span></h4>
+                <h5>Last Week Distance: <span id="dashdistance">##.## miles</span></h5>
+                <h5>Average MPG: <span id="dashmpg">##.# mpg</span></h5>
+                <h5>Fuel Consumed: <span id="dashfuel">##.## gallons</span></h5>
+              </article>
+              <article>
+                <div id="drivescorechart"></div>
+              </article>
+              <article>
+                <div id="drivedistchart"></div>
+              </article>
+              <article>
+                <div id="fuelchart"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sep"></div>
+  </section>
+
+  <!-- ###### Social ###### -->
+  <section id="social">
+    <div class="row">
+      <div class="twelve columns">
+        <h2>Social</h2>
+      </div>
+    </div>
+    <div class="row">
+      <input checked="" type="radio" name="socialslider" class="socialslide-button" id="socialslide1" selected="true">
+      <input type="radio" name="socialslider" class="socialslide-button" id="socialslide2">
+      <input type="radio" name="socialslider" class="socialslide-button" id="socialslide3">
+      <input type="radio" name="socialslider" class="socialslide-button" id="socialslide4">
+      <div class="socialactive">
+        <label for="socialslide1" class="slide-button">Twitter</label>
+        <label for="socialslide2" class="slide-button">Goodreads</label>
+        <label for="socialslide3" class="slide-button">Tumblr</label>
+        <label for="socialslide4" class="slide-button">Github</label>
+      </div>
+      <div id="socialslides" class="row">
+        <div class="overflow">
+          <div class="inner flex">
+            <article class="twitter flex">
+              <div class="four columns index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="twitter-status">
+                <blockquote><h4><a href="http://twitter.com/traeblain/status/680378032578801664">Trae Blain on Twitter</a></h4><p>Giddy up, Jingle Horse.... #MerryChristmas</p></blockquote>
+              </div>
+            </article>
+            <article class="goodreads flex">
+              <div class="four columns index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="goodreads-review">
+                <blockquote><h4><a href="http://twitter.com/traeblain/status/680378032578801664">Trae Blain on Twitter</a></h4><p>Giddy up, Jingle Horse.... #MerryChristmas</p></blockquote>
+              </div>
+            </article>
+            <article class="breakthebike flex">
+              <div class="four columns index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="breakthebike">
+                <a class="embedly-card" href="http://breakingthebike.com/">Breaking the Bike</a>
+              </div>
+            </article>
+            <article class="github flex">
+              <div class="four columns index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="github">
+                <div class="gh-wrap">
+                  <div class="gh-upper flex">
+                    Contributions
+                  </div>
+                  <div class="gh-cal">
+                    <img src="http://ghchart.rshah.org/traeblain" width="100%">
+                    <span class="qty">Less <span></span><span></span><span></span><span></span><span></span> More</span>
+                  </div>
+                  <div class="gh-flex">
+                    <span class="gh-small">Repositories</span>
+                    <span>12</span>
+                    <span class="gh-small"><a href="https://github.com/traeblain?tab=repositories">Public</a></span>
+                  </div>
+                  <div class="gh-flex">
+                    <span class="gh-small">Stars</span>
+                    <span>18</span>
+                    <span class="gh-small"><a href="https://github.com/stars/traeblain">View</a></span>
+                  </div>
+                  <div class="gh-flex">
+                    <span class="gh-small">Source Code</span>
+                    <span>This Site</span>
+                    <span class="gh-small"><a href="https://github.com/traeblain">View</a></span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sep"></div>
+  </section>
+
+  <!-- ###### Entertainment ###### -->
+  <section id="entertainment">
+    <div class="row">
+      <div class="twelve columns">
+        <h2>Sensory</h2>
+      </div>
+    </div>
+    <div class="row">
+      <input checked="" type="radio" name="entslider" class="entslide-button" id="entslide1" selected="true">
+      <input type="radio" name="entslider" class="entslide-button" id="entslide2">
+      <input type="radio" name="entslider" class="entslide-button" id="entslide3">
+      <div class="entactive">
+        <label for="entslide1" class="slide-button">Last.FM</label>
+        <label for="entslide2" class="slide-button">Television</label>
+        <label for="entslide3" class="slide-button">Movies</label>
+      </div>
+      <div id="entslides" class="row">
+        <div class="overflow">
+          <div class="inner flex">
+            <article class="lastfm flex">
+              <div class="four columns index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="lastfm">
+                
+              </div>
+            </article>
+            <article class="show flex">
+              <div class="four columns index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="show">
+                <a target="_blank" href="https://www.trakt.tv/users/traeblain"><img width="500" height="281" alt="traeblain" src="https://widgets.trakt.tv/users/3ce95a43ea6297d34071aab460918b21/watched/fanart2@2x.jpg?type=episode" /></a>
+              </div>
+            </article>
+            <article class="movie flex">
+              <div class="four columns index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="movie">
+                <a target="_blank" href="http://www.trakt.tv/users/traeblain"><img width="500" height="281" alt="traeblain" src="https://widgets.trakt.tv/users/3ce95a43ea6297d34071aab460918b21/watched/fanart2@2x.jpg?type=movie" /></a>
+              </div>
+            </article>
+            <article class="blank flex">
+              &nbsp;
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sep"></div>
+  </section>
+  {{ partial "footer.html" . }}
+
+</main>
+{{ partial "scripts.html" . }}
+<script type="text/javascript" src="/js/pt.min.js"></script>
+<script type="text/javascript" src="/js/plotly-latest.min.js"></script>
+<script type="text/javascript" src="/js/fetch.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+<script type="text/javascript">
+  /* jshint asi: true */
+  // Animated Background!
+  var space = new CanvasSpace("jumbo").display()
+  var form = new Form( space )
+  var pts = []
+  var lines = []
+  var counter = 0
+  var minPts = 75
+  var mono = new Image()
+  mono.src = '/images/tbmonogram.svg'
+
+  function populationControl() {
+    if (pts.length > 200) pts.shift()
+    if (counter++ % 20 === 0 && pts.length >= minPts) pts.shift()
+    if (pts.length < minPts) {
+      for (var i=pts.length; i<minPts; i++) {
+        pts.push( new Vector(space.size.x * Math.random(), space.size.y * Math.random() ) )
+      }
+    }
+  }
+
+  function connect() {
+    lines = []
+    pts.forEach( function(a) {
+      pts.forEach( function(b) {
+        if (a.distance(b) < 100) lines.push( new Pair(a).to(b) )
+      });
+    });
+  }
+
+  space.add({
+    animate: function(time, fps, context) {
+      form.stroke( "rgba(0,0,0,.5)", 0.5 )
+      form.lines( lines )
+      form.stroke( false )
+      form.fill( "#c8c8c8" )
+      form.points( pts, 1, true )
+      connect()
+      populationControl()
+      form.cc.drawImage(mono, space.size.x/2-125, space.size.y/2-125, 250, 250)
+    },
+    onMouseAction: function(type, x, y, evt) {
+      if (type=="move") {
+        if (Util.chance(0.07)) {
+          pts.push( new Vector(x, y) )
+        }
+      }
+    }
+  })
+  space.bindMouse()
+  space.play()
+
+  var width = document.getElementById('stepschart').offsetWidth
+  var height = 40/70 * width
+  var layout = {
+    xaxis: {
+      tickangle: -60
+    },
+    width: width,
+    height: height,
+    margin: {
+      r: 0,
+      t: 0,
+      b: 100
+    }
+  }
+
+  fetch('https://traeblain-fitbit.apispark.net:443/v1/datas/?%24size=31&%24sort=date%20DESC')
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    var stepdata = [{x: [], y: [], type: 'scatter', mode: "lines+markers", marker: {symbol: "circle", color: '#66cccc', size: 8, line: {width: 1, color: '#499393'}}}]
+    var floordata = [{x: [], y: [], type: 'scatter', mode: "lines+markers", marker: {symbol: "circle", color: '#66cccc', size: 8, line: {width: 1, color: '#499393'}}}]
+    var caloriedata = [{x: [], y: [], type: 'scatter', mode: "lines+markers", marker: {symbol: "circle", color: '#66cccc', size: 8, line: {width: 1, color: '#499393'}}}]
+    var weekstep = 0, weekfloors = 0, totalactive = 0, totalsed = 0, activelevel = ''
+    for (var i = json.length - 1; i >= 0; i--) {
+      stepdata[0].x.push(moment(json[i].date, 'MM/DD/YYYY').format('MMM Do'))
+      floordata[0].x.push(moment(json[i].date, 'MM/DD/YYYY').format('MMM Do'))
+      caloriedata[0].x.push(moment(json[i].date, 'MM/DD/YYYY').format('MMM Do'))
+      stepdata[0].y.push(json[i].steps)
+      floordata[0].y.push(json[i].floors)
+      caloriedata[0].y.push(json[i].calories)
+      if (i < 7) {
+        weekstep = weekstep + json[i].steps
+        weekfloors = weekfloors + json[i].floors
+        totalactive = totalactive + json[i].light_active + json[i].active + json[i].very_active
+        totalsed = totalsed + json[i].sedentary
+      }
+    }
+    Plotly.newPlot('stepschart', stepdata, layout, {displaylogo: false});
+    Plotly.newPlot('floorchart', floordata, layout, {displaylogo: false});
+    Plotly.newPlot('caloriechart', caloriedata, layout, {displaylogo: false});
+    document.getElementById('fitsteps').innerHTML = weekstep + " (" + Math.round((0.000494968655 * weekstep) * 100) / 100 + " miles)"
+    document.getElementById('fitfloors').innerHTML = weekfloors + " (" + weekfloors * 10 + " ft)"
+    var activitypercent = Math.round((totalactive / (totalsed + totalactive)) * 1000) / 10
+    document.getElementById('fitpercent').innerHTML = activitypercent + "%"
+    var yestactivity = Math.round((json[0].light_active + json[0].active + json[0].very_active) / (json[0].sedentary + (json[0].light_active + json[0].active + json[0].very_active)) * 1000) / 10
+    if (yestactivity <= 21) {
+      activelevel = "Lazy"
+    } else if (yestactivity <= 32) {
+      activelevel = "Sedentary"
+    } else if (yestactivity <= 43) {
+      activelevel = "Moving"
+    } else {
+      activelevel = "Can't Stop!"
+    }
+    document.getElementById('fitlevel').innerHTML = activelevel
+    }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+  fetch('https://traeblain-dash.apispark.net:443/v1/datas/?%24size=100')
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    json.sort(function (a, b) {
+      return moment(b.started, 'MMMM D, YYYY at hh:mmA') - moment(a.started, 'MMMM D, YYYY at hh:mmA')
+    })
+    var score = [{x: [], y: [], type: 'scatter', mode: "lines+markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
+    var distance = [{x: [], y: [], type: 'scatter', mode: "markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
+    var fuel = [{x: [], y: [], type: 'scatter', mode: "markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
+    var totaldistance = 0.0, avmpg = 0.0, fuelconsumed = 0.0, avgscore = 0.0
+    for (var i = json.length - 1; i >= 0; i--) {
+      var date = moment(json[i].started, 'MMMM D, YYYY at hh:mmA')
+      score[0].x.push(date.format('MMM Do h:mma'))
+      distance[0].x.push(date.format('MMM Do h:mma'))
+      fuel[0].x.push(date.format('MMM Do h:mma'))
+      score[0].y.push(json[i].score)
+      distance[0].y.push(parseFloat(json[i].distance.substr(0, json[i].distance.length - 3)))
+      fuel[0].y.push(parseFloat(json[i].distance.substr(0, json[i].distance.length - 3))/(parseFloat(json[i].avg_mpg.substr(0, json[i].avg_mpg.length - 4)) + 5))
+      if (i < 7) {
+        totaldistance += parseFloat(json[i].distance.substr(0, json[i].distance.length - 3))
+        avmpg += parseFloat(json[i].avg_mpg.substr(0, json[i].avg_mpg.length - 4)) + 5
+        fuelconsumed += parseFloat(json[i].distance.substr(0, json[i].distance.length - 3))/(parseFloat(json[i].avg_mpg.substr(0, json[i].avg_mpg.length - 4)) + 5)
+        avgscore += json[i].score
+      }
+    }
+    avmpg = avmpg / 7
+    avgscore = avgscore / 7 //Fix this, should be weighted by distance
+    Plotly.newPlot('drivescorechart', score, layout, {displaylogo: false});
+    Plotly.newPlot('drivedistchart', distance, layout, {displaylogo: false});
+    Plotly.newPlot('fuelchart', fuel, layout, {displaylogo: false});
+    document.getElementById('dashscore').innerHTML = Math.round(avgscore)
+    document.getElementById('dashdistance').innerHTML = Math.round(totaldistance * 100) / 100 + " miles"
+    document.getElementById('dashmpg').innerHTML = Math.round(avmpg * 100) / 100 + " mpg"
+    document.getElementById('dashfuel').innerHTML = Math.round(fuelconsumed * 1000) / 1000 + " gallons"
+    }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+  fetch('https://traeblain-twitter.apispark.net:443/v1/datas/?%24sort=Link%20DESC&%24size=10')
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    var first = json[0]
+    document.getElementById('twitter-status').innerHTML = '<blockquote class="embedly-card" data-card-controls="0" data-card-key="bdfeaf9e6c274fb9a648b7a58a607e12"><h4><a href="' + first.Link + '">Trae Blain on Twitter</a></h4><p>' + first.Tweet + '</p></blockquote>'
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+  fetch('https://traeblain-goodreads.apispark.net:443/v1/datas/?%24size=100')
+  .then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    json.sort(function (a, b) {
+      return moment(b.started, 'MMMM D, YYYY at hh:mmA') - moment(a.started, 'MMMM D, YYYY at hh:mmA')
+    })
+    var first = json[json.length - 1]
+    document.getElementById('goodreads-review').innerHTML = '<blockquote class="embedly-card" data-card-controls="0" data-card-key="bdfeaf9e6c274fb9a648b7a58a607e12"><h4><a href="' + first.Link + '">' + first.Title + '</a></h4><p>' + /review: (.+)/g.exec(first.Image_Link)[1].substring(0, 160) + '&#8230;</p></blockquote>'
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+
+  
+</script>
+
+</body>
+</html>
