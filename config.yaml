@@ -5,7 +5,6 @@ metaDataFormat: "yaml"
 paginate: 5
 languageCode: "en-us"
 copyright: "This work is licensed under a All Rights Reserved licensed."
-canonifyurls: true
 ignoreFiles: ["\\.less$"]
 
 author:

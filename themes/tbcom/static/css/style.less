@@ -38,8 +38,8 @@
 
 // Breakpoints
 @bp-larger-than-mobile    : 400px;
-@bp-larger-than-phablet   : 550px;
-@bp-larger-than-tablet    : 750px;
+@bp-larger-than-phablet   : 768px;
+@bp-larger-than-tablet    : 769px;
 @bp-larger-than-desktop   : 1000px;
 @bp-larger-than-desktophd : 1200px;
 
@@ -535,6 +535,12 @@ footer {
       border-top: 3px solid @link-color;
       padding-top: 1rem;
     }
+    h4 {
+      font-size: 2.2rem;
+    }
+    h5 {
+      font-size: 1.7rem;
+    }
   }
   .fitsummary {
     h4, h5 {
@@ -554,8 +560,8 @@ footer {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-    min-height: 150px;
-    margin-bottom: 50px;
+    min-height: 100px;
+    margin-bottom: 5px;
   }
   .sub-block {
     background-position: center 10%;
@@ -657,14 +663,19 @@ footer {
 }
 #music div {
   float: left;
-  width: 125px;
-  height: 125px;
+  width: 50%;
   background-position: left top;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  &.artistwrap {
-    width: 250px;
+  display: inline-block;
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+  &.artistwrap, &.first {
+    width: 100%;
   }
   .artistbottom {
     position: absolute;
@@ -694,13 +705,9 @@ footer {
     font-weight: 900;
     color: @background-color;
   }
-  &.first {
-    width: 250px;
-    height: 250px;
-  }
   &.musicwrap {
     margin: 0 auto;
-    width: auto;
+    width: 100%;
     height: auto;
     float: none;
     display: inline-block;
@@ -710,6 +717,37 @@ footer {
   text-align: center;
   min-height: 500px;
 }
+#goodreads-review {
+  div {
+    text-align: center;
+    &#lastread {
+      text-align: left;
+      img {
+        float: left;
+        margin: 0.5rem 1rem 0.5rem 0;
+      }
+    }
+  }
+  h4 {
+    margin-top: 2rem;
+  }
+}
+a.goodreads-link {
+  text-decoration: none;
+  color: #aa7339;
+}
+#readingprogress {
+  width: 100%;
+  height: 30px;
+  background-color: @background-color;
+  border: 1px solid @primary-color;
+  box-sizing: border-box;
+  div {
+    background-color: #aa7339;
+    height: 100%;
+    text-align: center;
+  }
+}
 input[type=radio] {
   &.fitslide-button, &.dashslide-button, &.socialslide-button, &.entslide-button {
     display: none;
@@ -717,7 +755,7 @@ input[type=radio] {
 }
 label.slide-button {
   float: left;
-  width: 20%;
+  width: 45%;
   margin: 1rem 2.5%;
   text-transform: uppercase;
   color: @link-color;
@@ -725,6 +763,9 @@ label.slide-button {
   &:hover {
     cursor: pointer;
   }
+}
+.entactive label.slide-button {
+  width: 28%;
 }
 #fitslide1:checked ~ #fitslides, #fitslide1:checked ~ .fitactive,
 #dashslide1:checked ~ #dashslides, #dashslide1:checked ~ .dashactive,
@@ -760,8 +801,8 @@ label.slide-button {
   h1 { font-size: 5.0rem; padding: 1rem 0 1.5rem 1rem; }
   h2 { font-size: 4.2rem; }
   h3 { font-size: 3.6rem; }
-  h4 { font-size: 3.0rem; }
-  h5 { font-size: 2.4rem; }
+  h4, .index .inner h4 { font-size: 3.0rem; }
+  h5, .index .inner h5 { font-size: 2.4rem; }
   h6 { font-size: 1.5rem; }
   article.post {
     header {
@@ -1339,6 +1380,18 @@ a.st-ui-pagination-link, a.st-ui-pagination-link span {
     .st-ui-embed & {
       border: none !important;
     }
+  }
+  .index {
+    .index-block {
+      min-height: 150px;
+      margin-bottom: 50px;
+    }
+  }
+  #music div.first, #music div.artistwrap {
+    width: 50%;
+  }
+  label.slide-button {
+    width: 20%;
   }
 }
 

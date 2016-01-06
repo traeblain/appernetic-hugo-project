@@ -105,16 +105,16 @@
           <label for="dashslide1" class="slide-button">Summary</label>
           <label for="dashslide2" class="slide-button">Score</label>
           <label for="dashslide3" class="slide-button">Distance</label>
-          <label for="dashslide4" class="slide-button">Fuel</label>
+          <label for="dashslide4" class="slide-button">MPH</label>
         </div>
         <div id="dashslides">
           <div class="overflow">
             <div class="inner">
               <article class="dashsummary">
                 <h4>Driving Score: <span id="dashscore">65</span></h4>
-                <h5>Last Week Distance: <span id="dashdistance">##.## miles</span></h5>
+                <h5>Weekly Distance: <span id="dashdistance">##.## miles</span></h5>
                 <h5>Average MPG: <span id="dashmpg">##.# mpg</span></h5>
-                <h5>Fuel Consumed: <span id="dashfuel">##.## gallons</span></h5>
+                <h5>Fuel Used: <span id="dashfuel">##.## gallons</span></h5>
               </article>
               <article>
                 <div id="drivescorechart"></div>
@@ -123,7 +123,7 @@
                 <div id="drivedistchart"></div>
               </article>
               <article>
-                <div id="fuelchart"></div>
+                <div id="mphchart"></div>
               </article>
             </div>
           </div>
@@ -167,7 +167,12 @@
                 &nbsp;
               </div>
               <div class="eight columns" id="goodreads-review">
-                <blockquote><h4><a href="http://twitter.com/traeblain/status/680378032578801664">Trae Blain on Twitter</a></h4><p>Giddy up, Jingle Horse.... #MerryChristmas</p></blockquote>
+                <h4>Reading Challenge</h4>
+                <div><a href="https://www.goodreads.com/user_challenges/3831535" class="goodreads-link">You have read <span id="readcount"></span> of <span id="readtotal"></span> books.</a></div>
+                <div id="readingprogress"><div></div></div>
+                <div><span id="bookprogress"></span> books <span id="booksahead"></span> schedule</div>
+                <h4>Recently Read</h4>
+                <div id="lastread"><a href="https://www.goodreads.com/book/show/27069778-the-methuselah-treatment?utm_medium=api&amp;utm_source=rss"><img alt="The Methuselah Treatment" src="https://d.gr-assets.com/books/1446560899s/27069778.jpg" /></a><h5>The Methuselah Treatment by T.C. Powell</h5><p>Formulaic, uninspiring, and completely expected. Nothing special here.</p></div>
               </div>
             </article>
             <article class="breakthebike flex">
@@ -288,6 +293,17 @@
   var minPts = 75
   var mono = new Image()
   mono.src = '/images/tbmonogram.svg'
+  var xloc = space.size.x/2-125
+  var yloc = space.size.y/2-125
+  var xsize = 250
+  var ysize = 250
+  
+  // Fix iOS Scaling Bug
+  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (iOS) {
+    xsize = xsize * 10
+    ysize = ysize * 10
+  }
 
   function populationControl() {
     if (pts.length > 200) pts.shift()
@@ -317,7 +333,7 @@
       form.points( pts, 1, true )
       connect()
       populationControl()
-      form.cc.drawImage(mono, space.size.x/2-125, space.size.y/2-125, 250, 250)
+      form.cc.drawImage(mono, xloc, yloc, xsize, ysize)
     },
     onMouseAction: function(type, x, y, evt) {
       if (type=="move") {
@@ -352,6 +368,7 @@
       'Content-Type': 'application/json'
     }
   }
+  var tester
 
   fetch('https://traeblain.apispark.net/v1/fitbit/?%24size=31&%24sort=date%20DESC', headers)
   .then(function(response) {
@@ -406,16 +423,16 @@
     })
     var score = [{x: [], y: [], type: 'scatter', mode: "lines+markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
     var distance = [{x: [], y: [], type: 'scatter', mode: "markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
-    var fuel = [{x: [], y: [], type: 'scatter', mode: "markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
+    var mph = [{x: [], y: [], type: 'scatter', mode: "markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
     var totaldistance = 0.0, avmpg = 0.0, fuelconsumed = 0.0, avgscore = 0.0
     for (var i = json.length - 1; i >= 0; i--) {
       var date = moment(json[i].started, 'MMMM D, YYYY at hh:mmA')
       score[0].x.push(date.format('MMM Do h:mma'))
-      distance[0].x.push(date.format('MMM Do h:mma'))
-      fuel[0].x.push(date.format('MMM Do h:mma'))
+      distance[0].x.push(date.format('MMM Do a'))
+      mph[0].x.push(date.format('MMM Do a'))
       score[0].y.push(json[i].score)
       distance[0].y.push(parseFloat(json[i].distance.substr(0, json[i].distance.length - 3)))
-      fuel[0].y.push(parseFloat(json[i].distance.substr(0, json[i].distance.length - 3))/(parseFloat(json[i].avg_mpg.substr(0, json[i].avg_mpg.length - 4)) + 5))
+      mph[0].y.push(parseFloat(json[i].avg_mph.substr(0, json[i].avg_mph.length - 4)))
       if (i < 7) {
         totaldistance += parseFloat(json[i].distance.substr(0, json[i].distance.length - 3))
         avmpg += parseFloat(json[i].avg_mpg.substr(0, json[i].avg_mpg.length - 4)) + 5
@@ -427,7 +444,7 @@
     avgscore = avgscore / 7 //Fix this, should be weighted by distance
     Plotly.newPlot('drivescorechart', score, layout, {displaylogo: false});
     Plotly.newPlot('drivedistchart', distance, layout, {displaylogo: false});
-    Plotly.newPlot('fuelchart', fuel, layout, {displaylogo: false});
+    Plotly.newPlot('mphchart', mph, layout, {displaylogo: false});
     document.getElementById('dashscore').innerHTML = Math.round(avgscore)
     document.getElementById('dashdistance').innerHTML = Math.round(totaldistance * 100) / 100 + " miles"
     document.getElementById('dashmpg').innerHTML = Math.round(avmpg * 100) / 100 + " mpg"
@@ -451,8 +468,33 @@
     json.sort(function (a, b) {
       return moment(b.started, 'MMMM D, YYYY at hh:mmA') - moment(a.started, 'MMMM D, YYYY at hh:mmA')
     })
-    var first = json[json.length - 1]
-    document.getElementById('goodreads-review').innerHTML = '<blockquote class="embedly-card" data-card-controls="0" data-card-key="bdfeaf9e6c274fb9a648b7a58a607e12"><h4><a href="' + first.Link + '">' + first.Title + '</a></h4><p>' + /review: (.+)/g.exec(first.Image_Link)[1].substring(0, 160) + '&#8230;</p></blockquote>'
+    var finished = json[json.length - 1]
+    tester = json[json.length - 1]
+    var total = 42
+    var count = json.length
+    var perComplete = Math.round(count/total * 100)
+    var progress = count - Math.floor(moment().dayOfYear() / 365.25 * total)
+    document.getElementById('readcount').innerHTML = count
+    document.getElementById('readtotal').innerHTML = total
+    document.getElementById('readingprogress').firstChild.innerHTML = perComplete + '%'
+    document.getElementById('readingprogress').firstChild.setAttribute('style', 'width: ' + perComplete + '%;')
+    document.getElementById('bookprogress').innerHTML = Math.abs(progress)
+    if (progress === 0) {
+      document.getElementById('bookprogress').parentNode.innerHTML = "Reading right on schedule."
+    } else if (progress > 0) {
+      document.getElementById('booksahead').innerHTML = 'ahead of'
+    } else {
+      document.getElementById('booksahead').innerHTML = 'behind'
+    }
+    var regex = /(^<a.+?)<br[/]>/g 
+    //console.log(finished, regex.exec(finished.Image_Link)[0])
+    var imagelink = regex.exec(finished.Image_Link)[1]
+    regex = /.+author:\s(.+)</g
+    var author = regex.exec(finished.Image_Link)[1]
+    regex = /.+review:\s<.+?>(.+)</gm
+    var details = regex.exec(finished.Image_Link)[1]
+    document.getElementById('lastread').innerHTML = imagelink + '<h5>' + finished.Title + ' by ' + author + '</h5><p>' + details + '</p><p><a href="' + finished.Link + '">See my review here &raquo;</a></p>'
+    //document.getElementById('goodreads-review').innerHTML = '<blockquote class="embedly-card" data-card-controls="0" data-card-key="bdfeaf9e6c274fb9a648b7a58a607e12"><h4><a href="' + first.Link + '">' + first.Title + '</a></h4><p>' + /review: (.+)/g.exec(first.Image_Link)[1].substring(0, 160) + '&#8230;</p></blockquote>'
   }).catch(function(ex) {
     console.log('parsing failed', ex)
   })
