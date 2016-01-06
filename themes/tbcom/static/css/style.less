@@ -557,10 +557,13 @@ footer {
     min-height: 150px;
     margin-bottom: 50px;
   }
+  .sub-block {
+    background-position: center 10%;
+  }
   #fitbit .index-block {
     background-image: url(/images/fitbit-lowpoly.svg);
   }
-  #notebook .index-block, #dash .index-block {
+  #notebook .index-block {
     background-image: url(/images/tbmonogram.svg);
   }
   #dash .index-block {
@@ -577,6 +580,15 @@ footer {
   }
   .github .index-block {
     background-image: url(/images/github-octocat-lowpoly.svg);
+  }
+  .music .index-block {
+    background-image: url(/images/music-lowpoly.svg);
+  }
+  .television .index-block {
+    background-image: url(/images/television-lowpoly.svg);
+  }
+  .movie .index-block {
+    background-image: url(/images/film-reel-lowpoly.svg);
   }
 }
 #github {
@@ -642,6 +654,61 @@ footer {
       }
     }
   }
+}
+#music div {
+  float: left;
+  width: 125px;
+  height: 125px;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  &.artistwrap {
+    width: 250px;
+  }
+  .artistbottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 0.75rem;
+    background-color: @primary-color;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from( @primary-color ), to(rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(bottom, @primary-color, rgba(0,0,0,0));
+    background: -moz-linear-gradient(bottom, @primary-color, rgba(0,0,0,0));
+    background: -ms-linear-gradient(bottom, @primary-color, rgba(0,0,0,0));
+    background: -o-linear-gradient(bottom, @primary-color, rgba(0,0,0,0));
+    background: linear-gradient(bottom, @primary-color, rgba(0,0,0,0));
+    color: @background-color;
+    width: 100%;
+    text-indent: 0.75rem;
+    text-align: left;
+    p {
+      margin: 0;
+      font-size: 1.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  a {
+    font-weight: 900;
+    color: @background-color;
+  }
+  &.first {
+    width: 250px;
+    height: 250px;
+  }
+  &.musicwrap {
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    float: none;
+    display: inline-block;
+  }
+}
+#television, #movie, #music {
+  text-align: center;
+  min-height: 500px;
 }
 input[type=radio] {
   &.fitslide-button, &.dashslide-button, &.socialslide-button, &.entslide-button {
