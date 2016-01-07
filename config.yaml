@@ -19,6 +19,7 @@ blackfriday:
 params:
   disqus: traeblain
   segment: en92uyjogkzxfc8is193
+  swiftype: xxvxuPQWopgGHCpFwzi-
   Menu:
     - Name: Blog
       Link: /blog
@@ -29,7 +30,7 @@ params:
       Link: http://facebook.com/traeblain
       Weight: 2
       Pre: "<i class='fa fa-facebook'></i>"
-      Title: Facebook  
+      Title: Facebook
     - Name: Twitter
       Link: http://twitter.com/traeblain
       Weight: 3

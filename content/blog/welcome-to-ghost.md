@@ -1,6 +1,6 @@
 ---
 title: Welcome to Ghost
-background: 'https://ghost.org/images/ghost.png'
+background: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Ghost-Logo.svg/1000px-Ghost-Logo.svg.png'
 text_color: dark
 tags: []
 categories: []
@@ -36,7 +36,7 @@ Want to link to a source? No problem. If you paste in a URL, like http://ghost.o
 
 Images work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:
 
-![The Ghost Logo](https://ghost.org/images/ghost.png)
+![The Ghost Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Ghost-Logo.svg/1000px-Ghost-Logo.svg.png)
 
 Not sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:
 
@@ -48,7 +48,7 @@ Not sure which image you want to use yet? That's ok too. Leave yourself a descri
 Sometimes a link isn't enough, you want to quote someone on what they've said. Perhaps you've started using a new blogging platform and feel the sudden urge to share their slogan? A quote might be just the way to do it!
 
 > Ghost - Just a blogging platform
-> 
+>
 > <cite>-- Someone</cite>
 
 ###### Working with Code
