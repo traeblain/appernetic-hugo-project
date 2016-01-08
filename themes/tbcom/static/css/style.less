@@ -596,6 +596,12 @@ footer {
   .movie .index-block {
     background-image: url(/images/film-reel-lowpoly.svg);
   }
+  .pgp .index-block {
+    background-image: url(/images/lock-lowpoly.svg);
+  }
+  .bitcoin .index-block {
+    background-image: url(/images/bitcoin-lowpoly.svg);
+  }
 }
 #github {
   .gh-wrap {
@@ -748,8 +754,52 @@ a.goodreads-link {
     text-align: center;
   }
 }
+#pgp {
+  h5 {
+    margin-bottom: 0;
+  }
+  p {
+    margin-bottom: 0;
+    text-align: right;
+    span {
+      padding-left: 0.5rem;
+      display: inline-block;
+    }
+  }
+  textarea {
+    margin-top: 2rem;
+    width: 100%;
+    min-height: 17.5rem;
+    cursor: pointer;
+  }
+}
+#bitcoin {
+  text-align: center;
+  p {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    color: @secondary-color;
+  }
+  code {
+    padding: 2rem 0;
+    font-size: 1rem;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+#pgp, #bitcoin {
+  .verify {
+    font-weight: 900;
+    text-transform: uppercase;
+    a {
+      text-decoration: none !important;
+    }
+    font-size: 1.1rem;
+  }
+}
 input[type=radio] {
-  &.fitslide-button, &.dashslide-button, &.socialslide-button, &.entslide-button {
+  &.fitslide-button, &.dashslide-button, &.socialslide-button, &.entslide-button, &.miscslide-button {
     display: none;
   }
 }
@@ -767,17 +817,22 @@ label.slide-button {
 .entactive label.slide-button {
   width: 28%;
 }
+.miscactive label.slide-button {
+  width: 45%;
+}
 #fitslide1:checked ~ #fitslides, #fitslide1:checked ~ .fitactive,
 #dashslide1:checked ~ #dashslides, #dashslide1:checked ~ .dashactive,
 #socialslide1:checked ~ #socialslides, #socialslide1:checked ~ .socialactive,
-#entslide1:checked ~ #entslides, #entslide1:checked ~ .entactive {
+#entslide1:checked ~ #entslides, #entslide1:checked ~ .entactive,
+#miscslide1:checked ~ #miscslides, #miscslide1:checked ~ .miscactive {
   .inner { margin-left:0; }
   label:nth-child(1) { color: @primary-color !important; }
 }
 #fitslide2:checked ~ #fitslides, #fitslide2:checked ~ .fitactive,
 #dashslide2:checked ~ #dashslides, #dashslide2:checked ~ .dashactive,
 #socialslide2:checked ~ #socialslides, #socialslide2:checked ~ .socialactive,
-#entslide2:checked ~ #entslides, #entslide2:checked ~ .entactive {
+#entslide2:checked ~ #entslides, #entslide2:checked ~ .entactive,
+#miscslide2:checked ~ #miscslides, #miscslide2:checked ~ .miscactive {
   .inner { margin-left:-100%; }
   label:nth-child(2) { color: @primary-color !important; }
 }
@@ -830,6 +885,11 @@ label.slide-button {
   }
   .pagination {
     font-size: 2.75rem;
+  }
+  #bitcoin {
+    code {
+      font-size: 2rem;
+    }
   }
 }
 

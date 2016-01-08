@@ -273,6 +273,66 @@
     </div>
     <div class="sep"></div>
   </section>
+
+  <!-- Crypto -->
+  <section id="misc">
+    <div class="row">
+      <div class="twelve columns">
+        <h2>Misc</h2>
+      </div>
+    </div>
+    <div class="row">
+      <input checked="" type="radio" name="miscslider" class="miscslide-button" id="miscslide1" selected="true">
+      <input type="radio" name="miscslider" class="miscslide-button" id="miscslide2">
+      <div class="miscactive">
+        <label for="miscslide1" class="slide-button">PGP Key</label>
+        <label for="miscslide2" class="slide-button">Bitcoin</label>
+      </div>
+      <div id="miscslides" class="row">
+        <div class="overflow">
+          <div class="inner flex">
+            <article class="pgp flex">
+              <div class="four columns sub-block index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="pgp">
+                <h5>Fingerprint</h5>
+                <p><span>0337</span><span>778D</span><span>2A99</span><span>E3AE</span><span>13A1</span><span>89BA</span><span>5426</span><span>CFE9</span><span>ED1F</span><span>039D</span></p>
+                <h5>64-bit</h5>
+                <p><span>5426</span><span>CFE9</span><span>ED1F</span><span>039D</span></p>
+                <h5>Curl/RAW</h5>
+                <p><a href="https://keybase.io/traeblain/key.asc">https://keybase.io/traeblain/key.asc</a></p>
+                <textarea readonly onclick="selectAll(this)">-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.21 (MingW32)
+
+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6CvJ
+-----END PGP PUBLIC KEY BLOCK-----</textarea>
+                <p class="verify"><a href="https://keybase.io/traeblain">Identity Verified at Keybase &raquo;</a></p>
+              </div>
+            </article>
+            <article class="bitcoin flex">
+              <div class="four columns sub-block index-block">
+                &nbsp;
+              </div>
+              <div class="eight columns" id="bitcoin">
+                <p class="bc-title">Send Bitcoin to</p>
+                <p><a href="bitcoin:1MwB5g19ewrq8XzoKpwhJeXcAoWj5ERKqC"><img src="/images/bitcoin-address.png"></a></p>
+                <p><pre><code><a href="bitcoin:1MwB5g19ewrq8XzoKpwhJeXcAoWj5ERKqC">1MwB5g19ewrq8XzoKpwhJeXcAoWj5ERKqC</a></code></pre></p>
+                <p class="verify"><a href="https://www.coinbase.com/traeblain">&laquo; Use Coinbase Wallet &raquo;</a></p>
+              </div>
+            </article>
+            <article class="blank flex">
+              &nbsp;
+            </article>
+            <article class="blank flex">
+              &nbsp;
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sep"></div>
+  </section>
   {{ partial "footer.html" . }}
 
 </main>

@@ -296,3 +296,7 @@ fetch('https://traeblain.apispark.net/v1/topartists/', headers)
   document.getElementById('music').innerHTML = "Failed to gather music data..."
   console.log('parsing failed', ex)
 })
+
+function selectAll(e) {
+  e.select()
+}
