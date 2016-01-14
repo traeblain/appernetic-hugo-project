@@ -11,6 +11,6 @@
       {{ .Pre | safeHTML }}<span>&nbsp;{{ .Name | safeHTML }}</span>
     </a>
   {{ end }}
-  <a href="{{ .RSSlink }}" title="RSS Feed"><i class="fa fa-rss"></i>&nbsp;RSS</a>
+  <a href="{{ .Site.Params.rss }}" title="RSS Feed"><i class="fa fa-rss"></i>&nbsp;RSS</a>
 </nav>
 <a href="#" class="mainmenu" id="sideshow">More</a>

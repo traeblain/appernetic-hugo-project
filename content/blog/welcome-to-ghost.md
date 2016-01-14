@@ -40,7 +40,7 @@ Images work too! Already know the URL of the image you want to include in your a
 
 Not sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:
 
-![A bowl of bananas](http://placehold.it/250x450)
+{{< figure src="http://placehold.it/250x250" alt="A bowl of bananas" class="bordered" link="/blog/" title="A bowl of bananas">}}
 
 
 ##### Quoting

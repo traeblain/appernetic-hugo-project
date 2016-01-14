@@ -20,6 +20,7 @@ params:
   disqus: traeblain
   segment: en92uyjogkzxfc8is193
   swiftype: xxvxuPQWopgGHCpFwzi-
+  rss: /blog/index.xml
   Menu:
     - Name: Blog
       Link: /blog

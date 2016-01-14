@@ -7,15 +7,13 @@
 {{ partial "head.html" . }}
 <body>
 {{ `<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to experience this site.</p><![endif]-->` | safeHTML }}
-{{ $.Scratch.Add "section" "blog" }}
+{{ $.Scratch.Add "section" "404" }}
 <main class="container" role="main">
   {{ partial "header.html" . }}
 
-	{{ range .Paginator.Pages }}
-		{{ .Render "li" }}
-	{{ end }}
-
-	{{ partial "pagination.html" . }}
+  <section>
+    Oh No!!!!!!
+  </section>
 
   {{ partial "menu.html" . }}
 

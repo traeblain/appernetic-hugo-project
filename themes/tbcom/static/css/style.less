@@ -238,7 +238,8 @@ h2 { font-size: 3.6*.75rem; line-height: 1.25; letter-spacing: -.1rem;  }
 h3 { font-size: 3.0*.75rem; line-height: 1.3;  letter-spacing: -.1rem;  }
 h4 { font-size: 2.4*.75rem; line-height: 1.35; letter-spacing: -.08rem; }
 h5 { font-size: 1.8*.75rem; line-height: 1.5;  letter-spacing: -.05rem; }
-h6 { font-size: 1.5*.75rem; line-height: 1.6;  letter-spacing: 0;       }
+h6, figcaption h4 { font-size: 1.5*.75rem; line-height: 1.6;  letter-spacing: 0;       }
+figcaption h4 { text-align: center; margin-bottom: 0}
 
 article.post {
   header {
@@ -474,8 +475,9 @@ footer {
     margin-bottom: 0;
   }
 }
-.post img {
+.post img, figure {
   max-width: 100%;
+  display: inline-block;
 }
 
 /* Front Page Styles */
@@ -562,6 +564,12 @@ footer {
     background-size: contain;
     min-height: 100px;
     margin-bottom: 5px;
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+    }
   }
   .sub-block {
     background-position: center 10%;
@@ -570,7 +578,7 @@ footer {
     background-image: url(/images/fitbit-lowpoly.svg);
   }
   #notebook .index-block {
-    background-image: url(/images/tbmonogram.svg);
+    background-image: url(/images/pencil-lowpoly.svg);
   }
   #dash .index-block {
     background-image: url(/images/vw-lowpoly.svg);
@@ -858,7 +866,7 @@ label.slide-button {
   h3 { font-size: 3.6rem; }
   h4, .index .inner h4 { font-size: 3.0rem; }
   h5, .index .inner h5 { font-size: 2.4rem; }
-  h6 { font-size: 1.5rem; }
+  h6, figcaption h4 { font-size: 1.5rem; }
   article.post {
     header {
       padding-top: 10rem;
@@ -905,7 +913,7 @@ label.slide-button {
   h3 { font-size: 3.6*1.44rem; }
   h4 { font-size: 3.0*1.44rem; }
   h5 { font-size: 2.4*1.44rem; }
-  h6 { font-size: 1.5*1.44rem; }
+  h6, figcaption h4 { font-size: 1.5*1.44rem; }
   article.post {
     header {
       padding-top: 5.0*1.44*2rem;
@@ -1325,6 +1333,8 @@ blockquote {
   margin: 0;
   padding: 4rem 2rem;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
   &:before {
     content: '“';
     font-size: 18rem;
@@ -1334,7 +1344,8 @@ blockquote {
     display: inherit;
   }
   cite {
-    color: @light-grey;
+    color: @secondary-color;
+    float: right;
   }
 }
 
@@ -1376,18 +1387,24 @@ blockquote {
 
 .align-left {
   float: left;
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .align-right {
   float: right;
-  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .align-center {
   margin: 0 auto;
   text-align: center;
   display: block;
+}
+
+figure.bordered {
+  border: 0.5rem solid @primary-color;
+  padding: 0.5rem;
+  background: @background-color;
 }
 
 /* Misc

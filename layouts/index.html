@@ -7,7 +7,7 @@
 {{ partial "head.html" . }}
 <body class="{{ if .IsHome }}home{{ end }}">
 {{ `<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to experience this site.</p><![endif]-->` | safeHTML }}
-
+{{ $.Scratch.Add "section" "homepage" }}
 <main class="container index" role="main">
 
   <header class="twelve columns">
@@ -24,12 +24,12 @@
         <h2>Notebook</h2>
       </div>
     </div>
-    <div class="row flex ex">
+    <div class="row flex">
       <div class="four columns index-block">
-        &nbsp;
+        <a href="{{ "blog" | absURL }}">&nbsp;</a>
       </div>
       <div class="eight columns">
-        {{ range first 3 .Paginator.Pages }}
+        {{ range first 4 .Paginator.Pages }}
           {{ .Render "li" }}
         {{ end }}
       </div>
@@ -316,7 +316,7 @@ mQINBFIqOIABEAC8rXwo3cIceM442aLVH731jwFShh6OFPvbFfYJ9KQdnpgdRC9Rm1D29ie4gPyK5UQz
               </div>
               <div class="eight columns" id="bitcoin">
                 <p class="bc-title">Send Bitcoin to</p>
-                <p><a href="bitcoin:1MwB5g19ewrq8XzoKpwhJeXcAoWj5ERKqC"><img src="/images/bitcoin-address.png"></a></p>
+                <p><a href="bitcoin:1MwB5g19ewrq8XzoKpwhJeXcAoWj5ERKqC"><img src="/images/bitcoin-address-c.png"></a></p>
                 <p><pre><code><a href="bitcoin:1MwB5g19ewrq8XzoKpwhJeXcAoWj5ERKqC">1MwB5g19ewrq8XzoKpwhJeXcAoWj5ERKqC</a></code></pre></p>
                 <p class="verify"><a href="https://www.coinbase.com/traeblain">&laquo; Use Coinbase Wallet &raquo;</a></p>
               </div>
