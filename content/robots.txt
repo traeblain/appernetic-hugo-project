@@ -1,3 +1,4 @@
 User-agent: *
 Sitemap: /sitemap.xml
 Sitemap: /sitemap2.xml
+Disallow: /searchindex/
