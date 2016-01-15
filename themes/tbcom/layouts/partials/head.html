@@ -1,6 +1,6 @@
     <head>
         {{ partial "meta.html" . }}
-        <title>{{ if and (.Title) (.IsPage) }}{{ .Title }} &middot; {{ else }}{{ .Title | singularize }} &middot; {{ end }}{{ .Site.Title }}</title>
+        <title>{{ if and (.Title) (.IsPage) }}{{ .Title }} &middot; {{ else }}{{ replace .Title "Blogs" "Notebook" }} &middot; {{ end }}{{ .Site.Title }}</title>
         <link rel="canonical" href="{{ .Site.BaseURL }}" />
         {{ if and (.RSSLink) (not .IsHome) }}
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ .RSSLink }}">

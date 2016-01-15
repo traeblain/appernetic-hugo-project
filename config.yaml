@@ -1,10 +1,10 @@
 ---
-baseurl: "http://traeblain.com/"
+baseurl: "//traeblain.com/"
 title: "Trae Blain"
 metaDataFormat: "yaml"
 paginate: 5
 languageCode: "en-us"
-copyright: "This work is licensed under a All Rights Reserved licensed."
+copyright: "This work is licensed under an All Rights Reserved licensed."
 ignoreFiles: ["\\.less$"]
 
 author:
@@ -22,11 +22,11 @@ params:
   swiftype: xxvxuPQWopgGHCpFwzi-
   rss: /blog/index.xml
   Menu:
-    - Name: Blog
+    - Name: Notebook
       Link: /blog
       Weight: 1
       Pre: "<i class='fa fa-home'></i>"
-      Title: Blog
+      Title: Notebook
     - Name: Facebook
       Link: http://facebook.com/traeblain
       Weight: 2
