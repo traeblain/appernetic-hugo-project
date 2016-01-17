@@ -256,17 +256,17 @@ article.post {
     }
     .headline.dark, .datetime.dark {
       color: @primary-color;
-      text-shadow: -2px -2px 0 @background-color,
-                    2px -2px 0 @background-color,
-                    -2px 2px 0 @background-color,
-                    2px 2px 0 @background-color;
+      text-shadow: -2px -2px 10px @background-color,
+                    2px -2px 10px @background-color,
+                    -2px 2px 10px @background-color,
+                    2px 2px 10px @background-color;
     }
     .headline.light, .datetime.light {
       color: @background-color;
-      text-shadow: -2px -2px 0 @primary-color,
-                    2px -2px 0 @primary-color,
-                    -2px 2px 0 @primary-color,
-                    2px 2px 0 @primary-color;
+      text-shadow: -2px -2px 10px @primary-color,
+                    2px -2px 10px @primary-color,
+                    -2px 2px 10px @primary-color,
+                    2px 2px 10px @primary-color;
     }
     .datetime.light, .datetime.dark {
       text-shadow: none;
@@ -1405,6 +1405,9 @@ figure.bordered {
   border: 0.5rem solid @primary-color;
   padding: 0.5rem;
   background: @background-color;
+}
+figcaption {
+  text-align: center;
 }
 
 .fourohfour {
