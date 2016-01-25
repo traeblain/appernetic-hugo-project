@@ -19,6 +19,9 @@
 
 </main>
 {{ partial "scripts.html" . }}
+{{ if .Params.script }}
+<script type="text/javascript" src="{{ .Params.script }}"></script>
+{{ end }}
 
 </body>
 </html>
