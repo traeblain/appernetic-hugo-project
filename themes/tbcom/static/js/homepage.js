@@ -138,7 +138,7 @@ fetch('https://traeblain.apispark.net/v1/fitbit/?%24size=31&%24sort=date%20DESC'
   var activitypercent = Math.round((totalactive / (totalsed + totalactive)) * 1000) / 10
   document.getElementById('fitpercent').innerHTML = activitypercent + "%"
   var yestactivity = Math.round((json[0].light_active + json[0].active + json[0].very_active) / (json[0].sedentary + (json[0].light_active + json[0].active + json[0].very_active)) * 1000) / 10
-  if (yestactivity <= 21) {
+  if (yestactivity <= 18) {
     activelevel = "Lazy"
   } else if (yestactivity <= 32) {
     activelevel = "Sedentary"
@@ -160,17 +160,14 @@ fetch('https://traeblain.apispark.net/v1/dash/?%24size=100', headers)
     return moment(b.started, 'MMMM D, YYYY at hh:mmA') - moment(a.started, 'MMMM D, YYYY at hh:mmA')
   })
   var score = [{x: [], y: [], type: 'scatter', mode: "lines+markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
-  var distance = [{x: [], y: [], type: 'scatter', mode: "markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
-  var mph = [{x: [], y: [], type: 'scatter', mode: "markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
+  var distance = [{x: [], y: [], type: 'scatter', mode: "lines+markers", marker: {symbol: "pentagon", color: '#596aaf', size: 8, line: {width: 1, color: '#005082'}}}]
   var totaldistance = 0.0, avmpg = 0.0, fuelconsumed = 0.0, avgscore = 0.0
   for (var i = json.length - 1; i >= 0; i--) {
-    var date = moment(json[i].started, 'MMMM D, YYYY at hh:mmA')
-    score[0].x.push(date.format('MMM Do h:mma'))
-    distance[0].x.push(date.format('MMM Do a'))
-    mph[0].x.push(date.format('MMM Do a'))
-    score[0].y.push(json[i].score)
-    distance[0].y.push(parseFloat(json[i].distance.substr(0, json[i].distance.length - 3)))
-    mph[0].y.push(parseFloat(json[i].avg_mph.substr(0, json[i].avg_mph.length - 4)))
+    var day = moment(json[i].started.slice(0, -11), "MMMM D, YYYY").format("MMM Do")
+    if (score[0].x.indexOf(day) < 0) {
+      score[0].x.push(day)
+      distance[0].x.push(day)
+    }
     if (i < 7) {
       totaldistance += parseFloat(json[i].distance.substr(0, json[i].distance.length - 3))
       avmpg += parseFloat(json[i].avg_mpg.substr(0, json[i].avg_mpg.length - 4)) + 5
@@ -178,11 +175,25 @@ fetch('https://traeblain.apispark.net/v1/dash/?%24size=100', headers)
       avgscore += json[i].score
     }
   }
+  for (var i = 0; i < score[0].x.length; i++) {
+    var d = json.filter(function(v) {
+      return moment(v.started.slice(0, -11), "MMMM D, YYYY").format("MMM Do") == score[0].x[i]
+    })
+    var dailyscore = d.map(function(obj) {
+      return obj.score
+    })
+    var divisor = dailyscore.length
+    dailyscore = dailyscore.reduce((a, b) => a + b) / divisor
+    score[0].y.push(dailyscore)
+    var dist = d.map(function(obj)  {
+      return parseFloat(obj.distance.slice(0, -3))
+    }).reduce((a, b) => a + b)
+    distance[0].y.push(dist)
+  }
   avmpg = avmpg / 7
   avgscore = avgscore / 7 //Fix this, should be weighted by distance
-  Plotly.newPlot('drivescorechart', score, layout, {displaylogo: false});
-  Plotly.newPlot('drivedistchart', distance, layout, {displaylogo: false});
-  Plotly.newPlot('mphchart', mph, layout, {displaylogo: false});
+  Plotly.newPlot('drivescorechart', score, layout, {displaylogo: false})
+  Plotly.newPlot('drivedistchart', distance, layout, {displaylogo: false})
   document.getElementById('dashscore').innerHTML = Math.round(avgscore)
   document.getElementById('dashdistance').innerHTML = Math.round(totaldistance * 100) / 100 + " miles"
   document.getElementById('dashmpg').innerHTML = Math.round(avmpg * 100) / 100 + " mpg"
@@ -190,6 +201,56 @@ fetch('https://traeblain.apispark.net/v1/dash/?%24size=100', headers)
   }).catch(function(ex) {
     document.getElementById('dashscore').innerHTML = "Error Fetching Data..."
     console.log('parsing failed', ex)
+})
+fetch('https://traeblain.apispark.net:443/v1/states/?%24size=50', headers)
+.then(function(response) {
+  return response.json()
+}).then(function(json) {
+  var travel = [{
+                type: 'choropleth',
+                locationmode: 'USA-states',
+                locations: [],
+                z: [],
+                text: [],
+                zmin: 0,
+                zmax: 25,
+                colorscale: [
+                  [0, 'rgb(232,235,244)'], [0.05, 'rgb(168,179,221)'], [1, 'rgb(89,106,175)']
+                ],
+                marker: {
+                  line:{
+                    color: 'rgb(255,255,255)',
+                    width: 2
+                  }
+                },
+                colorbar: {
+                  title: 'Times<br>Visited',
+                  thickness: 12
+                },
+              }]
+  var trvllayout = {
+              geo:{
+                scope: 'usa',
+                showlakes: true,
+                lakecolor: 'rgb(255,255,255)'
+              },
+              width: width,
+              height: height,
+              margin: {
+                r: 0,
+                t: 0,
+                b: 0,
+                l: 0
+              }
+            }
+  for (var i = json.length - 1; i >= 0; i--) {
+    travel[0].z.push(json[i].visits)
+    travel[0].locations.push(json[i].state)
+    travel[0].text.push(json[i].long)
+  }
+  Plotly.newPlot('visitchart', travel, trvllayout, {showLink: false})
+}).catch(function(ex) {
+  console.log('parsing failed', ex)
 })
 fetch('https://traeblain.apispark.net/v1/statuses/?%24sort=Link%20DESC&%24size=10', headers)
 .then(function(response) {
