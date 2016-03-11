@@ -298,17 +298,18 @@ fetch('https://traeblain.apispark.net/v1/reads/?%24size=80', headers)
   document.getElementById('lastread').innerHTML = "Data collection failed..."
   console.log('parsing failed', ex)
 })
-fetch('https://traeblain.apispark.net/v1/topartists/', headers)
+fetch('https://api.fieldbook.com/v1/56e1cca05d27c403000d63b0/lastfm', headers)
 .then(function(response) {
   return response.json()
 }).then(function(json) {
   var r = '<div{0} style="background-image: url({1})"><span class="artistbottom"><p><a target="_blank" href="http://www.last.fm/music/{5}">{3}</a></p><p><em>{4} plays</em></p></span></div>'
   var html = ''
-  for (var i = 0; i <= json.length - 1; i++) {
+  var images = ['/images/topartists/first.png', '/images/topartists/second.png', '/images/topartists/third.png', '/images/topartists/fourth.png', '/images/topartists/fifth.png']
+  for (var i = 0; i < json.length; i++) {
     if (i == 0) {
-      html = r.replace('{0}', ' class="first"').replace('{1}', json[i].ImageLink).replace('{3}', json[i].Artist).replace('{4}', json[i].Plays).replace('{5}', json[i].Artist.replace(' ', '+')) + '<div class="artistwrap">'
+      html = r.replace('{0}', ' class="first"').replace('{1}', images[i]).replace('{3}', json[i].artist).replace('{4}', json[i].plays).replace('{5}', json[i].artist.replace(' ', '+')) + '<div class="artistwrap">'
     } else {
-      html = html + r.replace('{0}', '').replace('{1}', json[i].ImageLink).replace('{3}', json[i].Artist).replace('{4}', json[i].Plays).replace('{5}', json[i].Artist.replace(' ', '+'))
+      html = html + r.replace('{0}', '').replace('{1}', images[i]).replace('{3}', json[i].artist).replace('{4}', json[i].plays).replace('{5}', json[i].artist.replace(' ', '+'))
     }
   }
   document.getElementById('music').innerHTML = '<div class="musicwrap">' + html + '</div></div>'
