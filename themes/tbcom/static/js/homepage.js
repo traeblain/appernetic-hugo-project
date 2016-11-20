@@ -117,9 +117,9 @@ fetch('https://traeblain.apispark.net/v1/fitbit/?%24size=31&%24sort=date%20DESC'
   var caloriedata = [{x: [], y: [], type: 'scatter', mode: "lines+markers", marker: {symbol: "circle", color: '#66cccc', size: 8, line: {width: 1, color: '#499393'}}}]
   var weekstep = 0, weekfloors = 0, totalactive = 0, totalsed = 0, activelevel = ''
   for (var i = json.length - 1; i >= 0; i--) {
-    stepdata[0].x.push(moment(json[i].date, 'MM/DD/YYYY').format('MMM Do'))
-    floordata[0].x.push(moment(json[i].date, 'MM/DD/YYYY').format('MMM Do'))
-    caloriedata[0].x.push(moment(json[i].date, 'MM/DD/YYYY').format('MMM Do'))
+    stepdata[0].x.push(moment(json[i].date, 'MMMM D, YYYY').format('MMM Do'))
+    floordata[0].x.push(moment(json[i].date, 'MMMM D, YYYY').format('MMM Do'))
+    caloriedata[0].x.push(moment(json[i].date, 'MMMM D, YYYY').format('MMM Do'))
     stepdata[0].y.push(json[i].steps)
     floordata[0].y.push(json[i].floors)
     caloriedata[0].y.push(json[i].calories)
@@ -274,11 +274,12 @@ fetch('https://traeblain.apispark.net/v1/reads/?%24size=80', headers)
   var total = 42
   var count = json.length
   var perComplete = Math.round(count/total * 100)
+  var completeSize = (perComplete > 100) ? 100 : perComplete
   var progress = count - Math.floor(moment().dayOfYear() / 365.25 * total)
   document.getElementById('readcount').innerHTML = count
   document.getElementById('readtotal').innerHTML = total
   document.getElementById('readingprogress').firstChild.innerHTML = perComplete + '%'
-  document.getElementById('readingprogress').firstChild.setAttribute('style', 'width: ' + perComplete + '%;')
+  document.getElementById('readingprogress').firstChild.setAttribute('style', 'width: ' + completeSize + '%;')
   document.getElementById('bookprogress').innerHTML = Math.abs(progress)
   if (progress === 0) {
     document.getElementById('bookprogress').parentNode.innerHTML = "Reading right on schedule."
