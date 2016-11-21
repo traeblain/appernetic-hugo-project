@@ -6,8 +6,8 @@
   <a href="#" title="Search" class="st-search-show-outputs search-link">
     <i class="fa fa-search"></i><span>&nbsp;Search</span>
   </a>
-  {{ range .Site.Params.Menu }}
-    <a href="{{ .Link }}" title="{{ .Title }}">
+  {{ range .Site.Menus.main }}
+    <a href="{{ .URL }}" title="{{ .Identifier }}">
       {{ .Pre | safeHTML }}<span>&nbsp;{{ .Name | safeHTML }}</span>
     </a>
   {{ end }}

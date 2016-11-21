@@ -24,34 +24,36 @@ params:
   segment: gveNZnsGRVvfcJKu8CfxI3TgX5buZ0DT
   swiftype: xxvxuPQWopgGHCpFwzi-
   rss: /blog/index.xml
-  Menu:
-    - Name: Notebook
-      Link: /blog
+
+menu:
+  main:
+    - Name: "Notebook"
+      URL: "/blog"
       Weight: 1
       Pre: "<i class='fa fa-home'></i>"
-      Title: Notebook
-    - Name: Facebook
-      Link: http://facebook.com/traeblain
+      Identifier: "Notebook"
+    - Name: "Facebook"
+      URL: "http://facebook.com/traeblain"
       Weight: 2
       Pre: "<i class='fa fa-facebook'></i>"
-      Title: Facebook
-    - Name: Twitter
-      Link: http://twitter.com/traeblain
+      Identifier: "Facebook"
+    - Name: "Twitter"
+      URL: "http://twitter.com/traeblain"
       Weight: 3
       Pre: "<i class='fa fa-twitter'></i>"
-      Title: Twitter
+      Identifier: "Twitter"
     - Name: "B<span class='small'>the</span>B"
-      Link: http://breakingthebike.com/
+      URL: "http://breakingthebike.com/"
       Weight: 4
       Pre: "<i class='fa fa-bicycle'></i>"
-      Title: Breaking the Bike
-    - Name: Github
-      Link: http://github.com/traeblain
+      Identifier: "Breaking the Bike"
+    - Name: "Github"
+      URL: "http://github.com/traeblain"
       Weight: 5
       Pre: "<i class='fa fa-github'></i>"
-      Title: Github
-    - Name: PGP Info
-      Link: http://keybase.io/traeblain
+      Identifier: "Github"
+    - Name: "PGP Info"
+      URL: "http://keybase.io/traeblain"
       Weight: 6
       Pre: "<i class='fa fa-lock'></i>"
-      Title: PGP Info (Keybase)
+      Identifier: "PGP Info (Keybase)"
