@@ -1,10 +1,8 @@
 ---
-date: 2016-01-14T19:37:46-06:00
-title: New Site!
-tags: 
-  - site
-  - geek
-background: /images/brooklyn-bridge.jpg
+date: "2016-01-14"
+title: "New Site!"
+tags: [ "site", "geek" ]
+background: "/images/brooklyn-bridge.jpg"
 ---
 
 I did it!  I once again threw off the shackles of the old skin and slapped a new one on.  This one is bigger, bolder, better, beautifuler, boomier, ballsier, boisterous, blistering, boilermaking, and bombastic.  At least I like to think so.   What do you think?

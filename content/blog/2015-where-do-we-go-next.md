@@ -1,10 +1,8 @@
 ---
-date: 2016-01-14T20:37:46-06:00
-title: 2015 - Where do we go next?
-tags: 
-  - commentary
-  - geek
-background: /images/notebook-and-pen.jpg
+date: "2016-01-14"
+title: "2015 - Where do we go next?"
+tags: [ "commentary", "geek" ]
+background: "/images/notebook-and-pen.jpg"
 ---
 
 So if you look at [my old site][blog] you'll see I made one post in 2015.  One solitary post in January of that year, then nothing.  There was a reason for that.  If you [read that post][2015], you'll see it was about simplifying my life.  One of those things I did, was remove myself from blogging for a time.  I don't know if it helped or hurt, but it was one of the things I did.

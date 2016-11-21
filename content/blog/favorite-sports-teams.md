@@ -1,8 +1,7 @@
 ---
-title: My Favorite Sports Teams
-date: 2016-03-17T01:18:00-06:00
-tags:
-  - sports
+title: "My Favorite Sports Teams"
+date: "2016-03-17"
+tags: [ "sports" ]
 draft: true
 ---
 

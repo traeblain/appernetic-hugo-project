@@ -1,12 +1,10 @@
 ---
-title: Data Driven Site
-date: 2016-01-19T18:31:08-06:00
-background: /images/graph-on-screen.jpg
-text_color: dark
-tags:
-  - geek
-  - site
-script: /data/data-driven-site.js
+title: "Data Driven Site"
+date: "2016-01-19"
+background: "/images/graph-on-screen.jpg"
+text_color: "dark"
+tags: [ "geek", "site" ]
+script: "/data/data-driven-site.js"
 ---
 
 I'm quite proud of my homepage.  As I said before, I used to use services like [Flavors.me][] and [About.me][] for my main page because they did something particular...that gathered my info in one place.  From social sites to image sites, these tools did that easily.  But I started to realize I wasn't showing what I really wanted...additionally I was having a hard time keeping those connections up as well.  So it was time to make my own.

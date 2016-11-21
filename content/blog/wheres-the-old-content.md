@@ -1,11 +1,8 @@
 ---
-date: 2016-01-14T11:37:46-06:00
-title: Wheres the Old Content?
-tags: 
-  - site
-  - blog
-  - housekeeping
-background: /images/space-horizon.jpg
+date: "2016-01-14"
+title: "Wheres the Old Content?"
+tags: [ "site", "blog", "housekeeping" ]
+background: "/images/space-horizon.jpg"
 ---
 
 So if I have a new site, new style, new domain...you'd think I'd scrub all my old content.  But that's not exactly true.

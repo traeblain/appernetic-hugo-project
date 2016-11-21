@@ -1,9 +1,7 @@
 ---
-date: 2016-03-01T20:37:46-06:00
-title: To DH, or Not To DH
-tags: 
-  - commentary
-  - sports
+date: "2016-03-01"
+title: "To DH, or Not To DH"
+tags: [ "commentary", "sports" ]
 draft: true
 ---
 
