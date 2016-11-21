@@ -1,0 +1,67 @@
+baseurl = "//traeblain.com/"
+copyright = "This work is licensed under an All Rights Reserved licensed."
+ignoreFiles = ["\\.less$"]
+languageCode = "en-us"
+metaDataFormat = "yaml"
+paginate = 5.0
+publishdir = "public"
+theme = "tbcom"
+title = "Trae Blain"
+
+[author]
+  name = "Trae Blain"
+
+[blackfriday]
+  extensions = ["hardLineBreak"]
+  plainIDAnchors = true
+
+[menu]
+
+  [[menu.main]]
+    identifier = "Notebook"
+    name = "Notebook"
+    pre = "<i class='fa fa-home'></i>"
+    url = "/blog"
+    weight = 1.0
+
+  [[menu.main]]
+    identifier = "Facebook"
+    name = "Facebook"
+    pre = "<i class='fa fa-facebook'></i>"
+    url = "http://facebook.com/traeblain"
+    weight = 2.0
+
+  [[menu.main]]
+    identifier = "Twitter"
+    name = "Twitter"
+    pre = "<i class='fa fa-twitter'></i>"
+    url = "http://twitter.com/traeblain"
+    weight = 3.0
+
+  [[menu.main]]
+    identifier = "Breaking the Bike"
+    name = "B<span class='small'>the</span>B"
+    pre = "<i class='fa fa-bicycle'></i>"
+    url = "http://breakingthebike.com/"
+    weight = 4.0
+
+  [[menu.main]]
+    identifier = "Github"
+    name = "Github"
+    pre = "<i class='fa fa-github'></i>"
+    url = "http://github.com/traeblain"
+    weight = 5.0
+
+  [[menu.main]]
+    identifier = "PGP Info (Keybase)"
+    name = "PGP Info"
+    pre = "<i class='fa fa-lock'></i>"
+    url = "http://keybase.io/traeblain"
+    weight = 6.0
+
+[params]
+  disqus = "traeblain"
+  rss = "/blog/index.xml"
+  segment = "gveNZnsGRVvfcJKu8CfxI3TgX5buZ0DT"
+  swiftype = "xxvxuPQWopgGHCpFwzi-"
+
