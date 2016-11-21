@@ -2,3 +2,6 @@
 !/themes/tbcom
 /public/
 *.sublime*
+/log/
+/static/*
+!/static/images
