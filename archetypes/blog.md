@@ -1,7 +1,8 @@
 ---
-tags: [ "blog", "default" ]
-background: "/images/tbmonogram.svg"
+tags: []
+background: ""
 text_color: "dark"
+script: ""
 ---
 
 
