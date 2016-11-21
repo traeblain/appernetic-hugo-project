@@ -7,6 +7,8 @@ languageCode: "en-us"
 copyright: "This work is licensed under an All Rights Reserved licensed."
 ignoreFiles: ["\\.less$"]
 theme: "tbcom"
+publishdir: "/www/main/public"
+metaDataFormat: "yaml"
 
 author:
   name: Trae Blain
