@@ -1,9 +1,11 @@
 ---
-title: "My Favorite Sports Teams"
-date: "2016-03-17"
-tags: [ "sports" ]
+date: 2016-03-17T00:00:00
 draft: true
+tags:
+- sports
+title: My Favorite Sports Teams
 ---
+
 
 For posterity sake, I figured I'd make the definitive list of the best sports teams ever.  The best sports teams in the mind of Trae.  If I did keep up with all these sports/leagues, then this would be the teams I'd follow.  Yes, that's right, I don't follow all these...but who cares!?  See if you agree with me.  (I reserve the right to change my mind...)
 
@@ -53,7 +55,9 @@ I was told at my first race that I looked like Kyle Busch, so I thought "Sure, l
 
 #### Formula One: Daniel Ricciardo
 
-2015 was a horrible year for F1 racing (boring races without much excitement), but 2016 feels like it's going to return.  F1 is the best motor sport circuit out there, and this could be Daniel's year.  Racing for Red Bull-TAG Heuer, he has a uphill climb.  Mercedes and Ferrari seem to be putting together the best equipment these days, but Renault (re-branded as TAG Heuer for some reason...) might have turned things around after essentially being dump by everyone for 2016.  We will have to see.  Also new this year is Haas has brought an American team into the fray.  But with mediocre drivers and a common Ferrari equipment, there's nothing special right now.  Hopefully Gene can find some fresh talent and maybe push a Honda or entirely new engine.  There's nothing really distinguishing the Haas team right now, but that can change.  
+F1 racing is having some major issues, the races pretty boring without much excitement.  F1 is the best motor sport circuit out there, yet lately there's simply been little to no suffle after the qualifying runs.  
+
+Racing for Red Bull-TAG Heuer, he has a uphill climb.  But he's a great driver and has got a chance to put Mercedes away.  
 
 ### Cycling
 
