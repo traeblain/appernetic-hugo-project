@@ -8,10 +8,9 @@ copyright: "This work is licensed under an All Rights Reserved licensed."
 ignoreFiles: ["\\.less$"]
 theme: "tbcom"
 publishdir: "/www/main/public"
-metaDataFormat: "yaml"
 
 author:
-  name: Trae Blain
+  name: "Trae Blain"
 
 
 blackfriday:
@@ -20,10 +19,10 @@ blackfriday:
     - hardLineBreak
 
 params:
-  disqus: traeblain
-  segment: gveNZnsGRVvfcJKu8CfxI3TgX5buZ0DT
-  swiftype: xxvxuPQWopgGHCpFwzi-
-  rss: /blog/index.xml
+  disqus: "traeblain"
+  segment: "gveNZnsGRVvfcJKu8CfxI3TgX5buZ0DT"
+  swiftype: "xxvxuPQWopgGHCpFwzi-"
+  rss: "/blog/index.xml"
 
 menu:
   main:
